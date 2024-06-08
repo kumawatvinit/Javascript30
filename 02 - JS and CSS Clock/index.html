@@ -11,6 +11,7 @@
         <div class="hand hour"></div>
         <div class="hand min"></div>
         <div class="hand sec"></div>
+        <div class="center-circle"></div>
       </div>
     </div>
 
@@ -56,19 +57,65 @@
 
       .hour {
         width: 5px;
-        height: 28%;
+        height: 25%;
       }
       .min {
         width: 4px;
-        height: 35%;
+        height: 30%;
       }
       .sec {
         width: 3px;
-        height: 45%;
+        height: 35%;
+      }
+
+      .center-circle {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-color: rgb(10, 39, 70);
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .mark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: rgb(10, 39, 70);
+        transform-origin: bottom;
+
+        width: 2px;
+        height: 5px;
+      }
+
+      .mark.hour {
+        width: 4px;
+        height: 12px;
       }
     </style>
 
     <script>
+      function createMarks() {
+        const clockFace = document.querySelector(".clock-face");
+
+        for (let i = 0; i < 60; i++) {
+          const mark = document.createElement("div");
+          mark.className = "mark";
+
+          const angle = 6 * i;
+          mark.style.transform = `translate(-50%, -100%) rotate(${angle}deg) translate(0, 71px)`;
+
+          if (i % 5 === 0) {
+            mark.classList.add("hour");
+            // mark.textContent = `${i/5}`;
+          }
+
+          clockFace.appendChild(mark);
+        }
+      }
+
       function setTime() {
         const now = new Date();
 
@@ -76,8 +123,8 @@
         const mins = now.getMinutes();
         const secs = now.getSeconds();
 
-        const hrDeg = (360 * hrs) / 12 + (30 * mins) / 60 ;
-        const minDeg = (360 * mins) / 60 + (6 * secs) / 60 ;
+        const hrDeg = (360 * hrs) / 12 + (30 * mins) / 60;
+        const minDeg = (360 * mins) / 60 + (6 * secs) / 60;
         const secDeg = (360 * secs) / 60;
 
         const hrHand = document.querySelector(".hour");
@@ -89,9 +136,9 @@
         secHand.style.transform = `translate(0px, -100%) rotate(${secDeg}deg)`;
       }
 
-      setInterval(setTime, 1000);
-
+      createMarks();
       setTime();
+      setInterval(setTime, 1000);
     </script>
   </body>
 </html>
