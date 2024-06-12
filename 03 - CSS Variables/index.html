@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS variables</title>
+    <style>
+      :root {
+        --spacing: 10px;
+        --blur: 4px;
+        --base: #4dff00;
+      }
+
+      body {
+        background-color: rgb(33, 33, 119);
+        text-align: center;
+        font-size: 25px;
+      }
+
+      img {
+        margin: 30px 20px;
+        border: 10px solid black;
+        padding: var(--spacing);
+        background-color: var(--base);
+        filter: blur(var(--blur));
+      }
+
+      #js {
+        color: var(--base);
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <h2>Update CSS variables with <span id="js">JS</span></h2>
+
+    <div class="main-text">
+      <span>Spacing:</span>
+      <input name="spacing" type="range" min="0" max="50" value="10" data-sizing="px" />
+
+      <span>Blur:</span>
+      <input name="blur" type="range" min="0" max="20" data-sizing="px"/>
+
+      <span>Base Color:</span>
+      <input name="base" type="color" value="#ffc600"/>
+    </div>
+
+    <div class="img">
+      <img src="http://unsplash.it/800/500?image=901" />
+    </div>
+
+    <script>
+        const inputs = document.querySelectorAll('input');
+
+        function handleUpdate() {
+            const suffix = this.dataset.sizing || '';
+
+            document.documentElement.style.setProperty(`--${this.name}`, this.value+suffix);
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('change', handleUpdate)
+        });
+    </script>
+  </body>
+
+
+</html>
