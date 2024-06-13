@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Panelss</title>
+
+    <!-- link script.js file -->
+    <script src="script.js" defer></script>
+
+  </head>
+
+  <style>
+    html {
+      background-color: #ffc600;
+      font-family: "Amatic SC", cursive;
+      color: white;
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    .panels {
+      /* background: rgb(106, 106, 176); */
+      display: flex;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .panel {
+      background: #6a3b3b;
+      background-size: cover;
+      background-position: center;
+
+      text-align: center;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+
+      transition: font-size 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+        flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), background 0.2s;
+
+      /* box-shadow: 8px 5px 10px 2px rgba(0, 0, 0, 0.75); */
+    }
+
+    .panel1 {
+      background-image: url(https://images.unsplash.com/photo-1718174405504-6c65225786de?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    }
+    .panel2 {
+      background-image: url(https://plus.unsplash.com/premium_photo-1663937576129-691403d6be60?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    }
+
+    .panel3 {
+      background-image: url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d);
+    }
+
+    .panel4 {
+      background-image: url(https://images.unsplash.com/photo-1570577086798-196e0339c52a?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    }
+
+    .panel5 {
+      background-image: url(https://images.unsplash.com/photo-1718131507821-78f160223491?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    }
+
+    .panel p {
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+      text-transform: uppercase;
+      font-size: 2em;
+    }
+
+    .panel p:nth-child(2) {
+      font-size: 4em;
+    }
+
+    .panel > * {
+      margin: 0;
+      width: 100%;
+      transition: transform 0.5s;
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .panel > :first-child {
+      transform: translateY(-100%);
+    }
+    .panel.open-active > *:first-child {
+      transform: translateY(0%);
+    }
+    .panel > :last-child {
+      transform: translateY(100%);
+    }
+    .panel.open-active > *:last-child {
+      transform: translateY(0%);
+    }
+
+    .panel.open {
+      font-size: 40px;
+      flex: 5;
+    }
+  </style>
+
+  <body>
+    <div class="panels">
+      <div class="panel panel1">
+        <p>Hey</p>
+        <p>Let's</p>
+        <p>Dance</p>
+      </div>
+      <div class="panel panel2">
+        <p>Give</p>
+        <p>Take</p>
+        <p>Receive</p>
+      </div>
+      <div class="panel panel3" id="panel3">
+        <p>Experience</p>
+        <p>It</p>
+        <p>Today</p>
+      </div>
+      <div class="panel panel4">
+        <p>Give</p>
+        <p>All</p>
+        <p>You can</p>
+      </div>
+      <div class="panel panel5">
+        <p>Life</p>
+        <p>In</p>
+        <p>Motion</p>
+      </div>
+    </div>
+  </body>
+</html>
